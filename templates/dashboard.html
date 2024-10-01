@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link href="https://fonts.cdnfonts.com/css/inclusive-sans-2" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/dash.css">
+<style>
+
+</style>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row box">
+            <div class="col-md-3 box-solid box-relative p-0 m-0">
+                <div class="d-flex box-absolute">
+                    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%;overflow-x: hidden;">
+                        <h1 class="w3-bar-item" style="font-family: 'Lato', sans-serif; font-weight: 400;font-size: 50px; color: #444444;">Echo</h1>
+                        <h3 class="w3-bar-item ms-4" style="font-family: 'Lato', sans-serif; color: #444444; font-weight: 500;">Task</h3>
+                        <ul>
+                            <a href="{{url_for('dashboard')}}" class="w3-bar-item w3-button" style="background-color: #d3d1d1; font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/vdjwmfqs.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Today</a>
+                            <a href="{{url_for('calendar')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/eouimtlu.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Calendar</a>
+                            <a href="{{url_for('note')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/zyzoecaw.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Note</a>
+                            <a href="{{url_for('profile')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/kthelypq.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Profile</a>
+                            <a href="{{url_for('about')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/lyrrgrsl.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>About</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end justify-content-end box-absolute">
+                    <a href="{{url_for('logout')}}" class="d-flex pe-4 sign-out" style="z-index: 1;">
+                        <h3>sign out
+                            <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/gwvmctbb.json"
+                                trigger="hover"
+                                colors="primary:#444444,secondary:#444444"
+                                style="width:30px;height:30px; padding-top: 7px;">
+                            </lord-icon>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+            <div class="continer-fluid col-md-9 p-0 img-background">
+                <div class="col-md-12 row ms-1 ">
+                    <div class="col-md-8 ms-1">
+                        <h2 class=" mt-5" style='z-index: 1; color: black;'>Today's Task</h2>
+                    </div>
+                    <div class="col-md-12">
+                        {% if count_event == 0 %}
+                        <div class="hello mb-3 row" style="background-color: #fefefe8c;margin-top: 10px;margin-right: 4px; height: 50px; border-radius: 15px;padding-top: 12px;padding-left: 15px;">
+                            <h3 style="font-family: 'Inclusive Sans', sans-serif; font-weight: lighter; font-size: 20px; color: rgb(59, 59, 59);"> No event for today </h3>
+                        </div>
+                        {% else %} 
+                        {% for event in event_today %}
+                        <div class="hello mb-3 row" style="background-color: #fefefe8c;margin-top: 10px;margin-right: 4px; height: 50px; border-radius: 15px;padding-top: 12px;padding-left: 15px;">
+                            <h3 id="{{event[0]}}"style="font-family: 'Inclusive Sans', sans-serif; font-weight: lighter; font-size: 20px; color: rgb(59, 59, 59);"> 
+                                {{event[0]}}
+                                <button onclick="delete_event(document.getElementById('{{event[0]}}').innerText);location.href=location.href"class="ms-4" style="border-style: none; background-color: rgba(255, 255, 255, 0);float: right;" ><script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/wpyrrmcq.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px;padding-top: 3px;padding-right: 10px;">
+                                </lord-icon>
+                            </button>
+                        </h3>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div id="event" class="mt-3 p-3 col-md-11" style="display: none;margin-left: 10px; background-color: #fefefe8c; border-radius:15px ;">
+                        <h3 style="color: black;">Add event</h3>
+                        <form action="{{url_for('insert')}}" method="POST">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" style='z-index: 1; color: black;'>date</label>
+                                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    placeholder="Enter email" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" style='z-index: 1; color: black;'>event</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter event" name="event" required>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-md-12 text-end">
+                        <button onclick="myFunction1()" class="me-3" style="background-color: rgba(255, 255, 255, 0); border: none; color: #fefefe8c;">
+                            <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/ftndcppj.json"
+                                    trigger="click"
+                                    colors="primary:#16a9c7,secondary:#ebe6ef"
+                                    style="width:60px;height:60px">
+                                </lord-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
+    </script>
+
+</body>
+<script>
+    function myFunction1() {
+        var event = document.getElementById("event");
+        if (event.style.display === "none") {
+            event.style.display = "block";
+        } else {
+            event.style.display = "none";
+        }
+    }
+    function delete_event(want){
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/delete_event', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ myString: want }));
+        xhr.onload = function() {
+        if (xhr.status == 200) {
+            console.log(JSON.parse(xhr.responseText));
+        } else {
+            console.error('Error:', xhr.status);
+        }
+        };
+     }
+sendStringToFlask();
+</script>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/dash.css">
+<style>
+
+</style>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row box">
+            <div class="col-md-3 box-solid box-relative p-0 m-0">
+                <div class="d-flex box-absolute">
+                    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%;overflow-x: hidden;">
+                        <h1 class="w3-bar-item" style="font-family: 'Lato', sans-serif; font-weight: 400;font-size: 50px; color: #444444;">Echo</h1>
+                        <h3 class="w3-bar-item ms-4" style="font-family: 'Lato', sans-serif; color: #444444; font-weight: 500;">Task</h3>
+                        <ul>
+                            <a href="{{url_for('dashboard')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/vdjwmfqs.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Today</a>
+                            <a href="{{url_for('calendar')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/eouimtlu.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Calendar</a>
+                            <a href="{{url_for('note')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/zyzoecaw.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Note</a>
+                            <a href="{{url_for('profile')}}" class="w3-bar-item w3-button" style="font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/kthelypq.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>Profile</a>
+                            <a href="{{url_for('about')}}" class="w3-bar-item w3-button" style="background-color: #d3d1d1; font-weight: 300;">
+                                <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/lyrrgrsl.json"
+                                    trigger="hover"
+                                    colors="primary:#444444"
+                                    style="width:20px;height:20px; padding-top: 3px; padding-right: 30px;">
+                                </lord-icon>About</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end justify-content-end box-absolute">
+                    <a href="{{url_for('logout')}}" class="d-flex pe-4 sign-out" style="z-index: 1;">
+                        <h3>sign out
+                            <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/gwvmctbb.json"
+                                trigger="hover"
+                                colors="primary:#444444,secondary:#444444"
+                                style="width:30px;height:30px; padding-top: 7px;">
+                            </lord-icon>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+    <!-- about section (unfinished) -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">About Us</h2>
+    <p class="w3-opacity"><i>Project ECHO</i></p>
+    <p class="w3-justify">Welcome to Echo, an innovative task management platform designed to streamline your workflow and enhance productivity. 
+        Echo is dedicated to providing users with a seamless and efficient way to organize their tasks, ensuring that deadlines are met and goals 
+        achieved. Our commitment to excellence is reflected in the precision and reliability of Echo's features, making it an indispensable tool for 
+        professionals and students alike. Join us on the journey to optimized productivity with Echo</p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-half">
+        <p>Kartpol</p>
+        <img src="/static/members/kartpol.png" class="w3-round" alt="nai kartpol" style="width:40%">
+      </div>
+      <div class="w3-half">
+        <p>Mao Son Tung</p>
+        <img src="/static/members/sunny.png" class="w3-round" alt="chingchong ting song ding dong" style="width:40%">
+      </div>
+    </div>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-third">
+        <p>Ton lonely</p>
+        <img src="/static/members/rizzler.png" class="w3-round" alt="Ton lonely" style="width:60%">
+      </div>
+      <div class="w3-third">
+        <p>Pun Smart Math Pro</p>
+        <img src="/static/members/punny.png" class="w3-round" alt="nai pun smart math pro" style="width:60%">
+      </div>
+      <div class="w3-third">
+        <p>Mark fun lek</p>
+        <img src="/static/members/markfunlek.png" class="w3-round" alt="mark fun lek" style="width:60%">
+      </div>
+    </div>
+  </div>
+
+
+<!-- Footer -->
+
+        </div>
+    </div>
+
+</body>
+
+</script>
+</html>
